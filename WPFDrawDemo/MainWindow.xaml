@@ -1,0 +1,142 @@
+﻿<Window x:Class="WPFDrawDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFDrawDemo"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <!--<Grid>
+        <Path Stroke="Red" StrokeThickness="1">
+            <Path.Data>
+                <PathGeometry>
+                    <PathFigure StartPoint="5,0">
+                        <LineSegment Point="95,0"></LineSegment>
+                        --><!--SweepDirection获取或设置一个值，该值指定是以 Clockwise 方向还是以 Counterclockwise 方向绘制弧-->
+                        <!--顺时针绘制还是逆时针绘制,你试下另一个值,看下效果就知道怎么回事了--><!--
+                        <ArcSegment Point="100,5" Size="5,5" SweepDirection="Clockwise"></ArcSegment>
+                        <LineSegment Point="100,85"></LineSegment>
+                        <ArcSegment Point="95,90" Size="5,5" SweepDirection="Clockwise"></ArcSegment>
+                        <PolyLineSegment Points="55,90 50,100 45,90 5,90"></PolyLineSegment>
+                        <ArcSegment Point="0,85" Size="5,5" SweepDirection="Clockwise"></ArcSegment>
+                        <LineSegment Point="0,5"></LineSegment>
+                        <ArcSegment Point="5,0" Size="5,5" SweepDirection="Clockwise"></ArcSegment>
+                    </PathFigure>
+                </PathGeometry>
+            </Path.Data>
+        </Path>
+    </Grid>-->
+    <Window.Resources>
+        <GeometryGroup x:Key="Geometry">
+            <EllipseGeometry Center="50,50" RadiusX="50" RadiusY="50"></EllipseGeometry>
+        </GeometryGroup>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Vertical" Grid.Column="2">
+            <Path Stroke="Green" Fill="Yellow" Data="{StaticResource Geometry}"/>
+            <Path Grid.Row="1" Stroke="Green" Fill="Red" Data="{StaticResource Geometry}"/>
+            <Path Stroke="Black" Fill="Gray" Data="M 0,0 A 20,20 45 1 1 0,1 Z"/>
+            <Canvas HorizontalAlignment="Left">
+                <Rectangle Width="150" Height="150">
+                    <Rectangle.Fill>
+                        <DrawingBrush Viewport="0,0,0.25,0.25" TileMode="Tile">
+                            <DrawingBrush.Drawing>
+                                <DrawingGroup>
+                                    <GeometryDrawing Brush="White">
+                                        <GeometryDrawing.Geometry>
+                                            <RectangleGeometry Rect="0,0,100,100"/>
+                                        </GeometryDrawing.Geometry>
+                                    </GeometryDrawing>
+                                    <GeometryDrawing>
+                                        <GeometryDrawing.Geometry>
+                                            <GeometryGroup>
+                                                <RectangleGeometry Rect="0,0,50,50" />
+                                                <RectangleGeometry Rect="50,50,50,50" />
+                                            </GeometryGroup>
+                                        </GeometryDrawing.Geometry>
+                                        <GeometryDrawing.Brush>
+                                            <LinearGradientBrush>
+                                                <GradientStop Offset="0.0" Color="Red" />
+                                                <GradientStop Offset="1.0" Color="Cyan" />
+                                            </LinearGradientBrush>
+                                        </GeometryDrawing.Brush>
+                                    </GeometryDrawing>
+                                </DrawingGroup>
+                            </DrawingBrush.Drawing>
+                        </DrawingBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Canvas>
+        </StackPanel>
+        <StackPanel Grid.Column="1">
+            <Grid>
+                <Path Stroke="Gray" Data="M 120,30 Q 50,70 60,280"></Path>
+                <Path Stroke="Gray" Data="M 73,100 Q 60,170 70,250"></Path>
+                <Path Stroke="Gray" Data="M 300,20 Q 390,50 385,250 Q 380,230 377,220 M 375,200 Q 380,230 375,265"></Path>
+                <Path Stroke="Gray" StrokeThickness="2" Data="M 210,90 Q 200,70 185,60 Q 180,60 175,90 Q 165,180 180,210 Q 155,170 160,80"></Path>
+                <Path Stroke="Gray" StrokeThickness="2" Data="M 210,90 Q 220,70 235,60 Q 245,70 ,253,90 Q 270,140 250,210 Q 270,170 270,80"></Path>
+                <Path Stroke="Gray" StrokeThickness="2" Data="M 160,80 Q 130,180 140,240 Q 125,160 135,100 Q 115,190 130,270"></Path>
+                <Path Stroke="Gray" StrokeThickness="2" Data="M 270,80 Q 310,140 300,240 Q 310,140 300,90 Q 340,180 330,260"></Path>
+                <Path Stroke="Gray" StrokeThickness="10" Data="M 175,100 Q 210,90 253,97"></Path>
+                <Path Stroke="Gray" StrokeThickness="10" Data="M 125,170 Q 210,150 325,168"></Path>
+                <Path Stroke="Gray"  StrokeThickness="3" Data="M 130,175 Q 160,175 200,182"></Path>
+                <Path Stroke="Gray" StrokeThickness="3" Data="M 250,185 Q 270,180 310,170"></Path>
+                <Path Stroke="Gray" StrokeThickness="3" Data="M 215,200 Q 215,230 210,253"></Path>
+                <Path Stroke="Gray" StrokeThickness="3" Data="M 125,193 Q 170,183 198,195"></Path>
+                <Path Stroke="Gray" StrokeThickness="3" Data="M 125,193 Q 120,190 143,207"></Path>
+                <Path Stroke="Gray" StrokeThickness="3" Data="M 317,207 Q 325,200 327,190 Q 300,183 260,197"></Path>
+                <Path Stroke="Gray" StrokeThickness="1" Data="M 143,207 Q 150,205 190,202"></Path>
+                <Path Stroke="Gray" StrokeThickness="1" Data="M 317,207 Q 290,205 267,204"></Path>
+                <Path Stroke="Gray" StrokeThickness="3" Data="M 145,190 C 143,193 165,220 178,190"></Path>
+                <Path Stroke="Gray" StrokeThickness="3" Data="M 275,192 C 270,190 295,223 308,188"></Path>
+                <Path Stroke="Gray" Data="M 205,205 Q 190,220 170,240"></Path>
+                <Path Stroke="Gray" Data="M 278,186 Q 250,190 245,210 Q 260,225 280,245"></Path>
+                <Path Stroke="Gray" Data="M 160,260 Q 230,240 400,270 Q 400,300 405,350"></Path>
+                <Path Stroke="Gray" Data="M 160,260 Q 160,300 165,350 M 175,270 Q 175,300 180,350"></Path>
+                <Path Stroke="Gray" Data="M 160,270 Q 140,270 40,280 Q 40,300 35,350"></Path>
+                <Path Stroke="Gray" StrokeThickness="5" Data="M 245,125 Q 240,110 220,111 Q 203,115 205,135 Q 210,150 224,150 
+              Q 235,150 238,140 Q 242,130 230,123 Q 223,120 218,125 C 217,125 213,140 230,138" Margin="-10,-3,10,10"></Path>
+                <Path Stroke="Gray" StrokeThickness="5" Data="M 195,130 L 185,145 L 203,143"></Path>
+                <Path Stroke="Gray" StrokeThickness="4" Data="M 233,122 L 240,118 L 233,120"></Path>
+            </Grid>
+        </StackPanel>
+        <Grid ShowGridLines="True" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.Clip> 
+                <EllipseGeometry Center="133 225" RadiusX="100" RadiusY="100"/>
+            </Grid.Clip>
+        </Grid>
+            <Path Stroke="Black" StrokeThickness="5" Data="M 133, 0 A 100, 100 45 1 1 0,1 Z"/>
+
+    </Grid>
+</Window>
